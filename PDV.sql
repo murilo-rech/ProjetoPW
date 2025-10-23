@@ -61,3 +61,13 @@ CREATE TABLE vendas (
     FOREIGN KEY (formpag_id) REFERENCES formpag(id),
     FOREIGN KEY (cupom_id) REFERENCES cupons(id)
 );
+
+insert into faq(simbolo, pergunta, resposta) values
+("fas fa-bolt", "Processamento Rápido", "Finalize vendas em segundos com nossa interface otimizada e intuitiva."),
+("fas fa-chart-line", "Relatórios Detalhados", "Acompanhe o desempenho do seu negócio com relatórios em tempo real."),
+("fas fa-mobile-alt", "Multiplataforma", "Acesse o sistema de qualquer dispositivo, a qualquer momento."),
+("fas fa-shield-alt", "Segurança Máxima", "Seus dados protegidos com criptografia de última geração."),
+("fas fa-sync", "Atualizações Constantes", "Sempre trazendo novas funcionalidades e melhorias."),
+("fas fa-headset", "Suporte 24/7", "Nossa equipe está sempre disponível para ajudar.");
+
+select * from faq;
