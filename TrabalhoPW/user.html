@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta - TechCommerce PDV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cash-register"></i>
+                    <span>TechCommerce PDV</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="pdv.html"><i class="fas fa-shopping-cart"></i> PDV</a></li>
+                        <li><a href="user.html" class="active"><i class="fas fa-user"></i> Minha Conta</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button id="user-profile-btn" class="btn btn-primary">
+                        <i class="fas fa-user"></i> Meu Perfil
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <section class="page active">
+                <div class="user-header">
+                    <h1>Minha Conta</h1>
+                    <button class="btn btn-danger" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </button>
+                </div>
+
+                <div class="user-card">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <h2 id="user-name">Nome do Usuário</h2>
+                            <p id="user-email">email@exemplo.com</p>
+                            <p>Membro desde: <span id="member-since">Jan 2023</span></p>
+                        </div>
+                    </div>
+
+                    <div class="user-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3 id="user-vendas">154</h3>
+                            <p>Vendas Realizadas</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <h3 id="user-tempo">42h</h3>
+                            <p>Tempo de Uso</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-chart-bar"></i>
+                            <h3 id="user-faturamento">R$ 8.245</h3>
+                            <p>Faturamento</p>
+                        </div>
+                    </div>
+
+                    <h3>Sistemas Disponíveis</h3>
+                    <div class="systems-grid">
+                        <div class="system-card">
+                            <i class="fas fa-cash-register"></i>
+                            <h4>PDV</h4>
+                            <p>Sistema de ponto de venda</p>
+                            <button class="btn btn-primary btn-sm">Acessar</button>
+                        </div>
+                        <div class="system-card">
+                            <i class="fas fa-boxes"></i>
+                            <h4>Estoque</h4>
+                            <p>Controle de inventário</p>
+                            <button class="btn btn-primary btn-sm">Acessar</button>
+                        </div>
+                        <div class="system-card">
+                            <i class="fas fa-chart-pie"></i>
+                            <h4>Relatórios</h4>
+                            <p>Análises e métricas</p>
+                            <button class="btn btn-primary btn-sm">Acessar</button>
+                        </div>
+                        <div class="system-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Clientes</h4>
+                            <p>Gestão de clientes</p>
+                            <button class="btn btn-primary btn-sm">Acessar</button>
+                        </div>
+                    </div>
+
+                    <div class="user-actions-grid">
+                        <div class="action-card">
+                            <i class="fas fa-cog"></i>
+                            <h4>Configurações</h4>
+                            <p>Configure suas preferências</p>
+                            <button class="btn btn-outline">Configurar</button>
+                        </div>
+                        <div class="action-card">
+                            <i class="fas fa-history"></i>
+                            <h4>Histórico</h4>
+                            <p>Veja seu histórico de vendas</p>
+                            <button class="btn btn-outline">Visualizar</button>
+                        </div>
+                        <div class="action-card">
+                            <i class="fas fa-download"></i>
+                            <h4>Exportar Dados</h4>
+                            <p>Exporte seus relatórios</p>
+                            <button class="btn btn-outline">Exportar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Profile Edit Modal -->
+    <div class="modal" id="profile-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Perfil</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="edit-name">Nome Completo</label>
+                    <input type="text" id="edit-name" class="form-control" value="Nome do Usuário">
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">E-mail</label>
+                    <input type="email" id="edit-email" class="form-control" value="email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="edit-phone">Telefone</label>
+                    <input type="tel" id="edit-phone" class="form-control" placeholder="(11) 99999-9999">
+                </div>
+                <div class="form-group">
+                    <label for="edit-password">Nova Senha</label>
+                    <input type="password" id="edit-password" class="form-control" placeholder="Deixe em branco para manter a atual">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal">Cancelar</button>
+                <button class="btn btn-primary" id="save-profile">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-cash-register"></i>
+                    <span>TechCommerce PDV</span>
+                </div>
+                <p>Soluções completas para o seu negócio</p>
+                <div class="footer-links">
+                    <a href="#">Sobre</a>
+                    <a href="#">Contato</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                <p>&copy; 2023 TechCommerce PDV. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/user.js"></script>
+</body>
+</html>

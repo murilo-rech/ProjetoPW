@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCommerce PDV - Sistema de Ponto de Venda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cash-register"></i>
+                    <span>TechCommerce PDV</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#" class="nav-link" data-page="pdv"><i class="fas fa-shopping-cart"></i> PDV</a></li>
+                        <li><a href="#" class="nav-link" data-page="user-info"><i class="fas fa-user"></i> Minha Conta</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button id="login-btn" class="btn btn-outline">
+                        <i class="fas fa-sign-in-alt"></i> Entrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Home Page -->
+            <section id="home" class="page active">
+                <div class="hero">
+                    <h1>Sistema PDV TechCommerce</h1>
+                    <p>Uma solução completa para gestão de vendas no varejo, com controle de estoque, relatórios avançados e integração com múltiplos canais.</p>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i> Começar Agora
+                    </button>
+                </div>
+
+                <h2>Por que escolher o TechCommerce PDV?</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Processamento Rápido</h3>
+                        <p>Finalize vendas em segundos com nossa interface otimizada e intuitiva.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Relatórios Detalhados</h3>
+                        <p>Acompanhe o desempenho do seu negócio com relatórios em tempo real.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Multiplataforma</h3>
+                        <p>Acesse o sistema de qualquer dispositivo, a qualquer momento.</p>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Segurança Máxima</h3>
+                        <p>Seus dados protegidos com criptografia de última geração.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-sync"></i>
+                        <h3>Atualizações Constantes</h3>
+                        <p>Sempre trazendo novas funcionalidades e melhorias.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Suporte 24/7</h3>
+                        <p>Nossa equipe está sempre disponível para ajudar.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Login/Register Modal -->
+    <div class="modal auth-modal" id="auth-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Entrar na Conta</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <div class="tab active" data-tab="login">Entrar</div>
+                    <div class="tab" data-tab="register">Cadastrar</div>
+                </div>
+
+                <div class="tab-content active" id="login-tab">
+                    <div class="form-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" class="form-control" placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Senha</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="Sua senha">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="login-submit" style="width: 100%;">
+                            <i class="fas fa-sign-in-alt"></i> Entrar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="register-tab">
+                    <div class="form-group">
+                        <label for="register-name">Nome Completo</label>
+                        <input type="text" id="register-name" class="form-control" placeholder="Seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">E-mail</label>
+                        <input type="email" id="register-email" class="form-control" placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Senha</label>
+                        <input type="password" id="register-password" class="form-control" placeholder="Crie uma senha">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm">Confirmar Senha</label>
+                        <input type="password" id="register-confirm" class="form-control" placeholder="Confirme sua senha">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="register-submit" style="width: 100%;">
+                            <i class="fas fa-user-plus"></i> Criar Conta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-cash-register"></i>
+                    <span>TechCommerce PDV</span>
+                </div>
+                <p>Soluções completas para o seu negócio</p>
+                <div class="footer-links">
+                    <a href="#">Sobre</a>
+                    <a href="#">Contato</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                <p>&copy; 2023 TechCommerce PDV. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV - TechCommerce PDV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cash-register"></i>
+                    <span>TechCommerce PDV</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="pdv.html" class="active"><i class="fas fa-shopping-cart"></i> PDV</a></li>
+                        <li><a href="user.html"><i class="fas fa-user"></i> Minha Conta</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <div class="user-info-small">
+                        <span id="pdv-user-name">Usuário</span>
+                        <span class="user-status online"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <section class="page active">
+                <h1>Ponto de Venda</h1>
+                <div class="pdv-container">
+                    <div class="input-section">
+                        <h2 class="section-title">Informações da Venda</h2>
+                        
+                        <div class="input-group">
+                            <label for="product-code"><i class="fas fa-barcode"></i> Código do Produto</label>
+                            <div class="input-with-button">
+                                <input type="text" id="product-code" placeholder="Digite o código do produto">
+                                <button class="btn btn-primary" id="add-product"><i class="fas fa-plus"></i> Adicionar</button>
+                            </div>
+                        </div>
+                        
+                        <table class="products-table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nome</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor Unit.</th>
+                                    <th>Total</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-table-body">
+                                <!-- Produtos serão inseridos aqui via JavaScript -->
+                            </tbody>
+                        </table>
+                        
+                        <button class="open-modal-btn" id="open-products-modal">
+                            <i class="fas fa-search"></i> Buscar Produtos no Catálogo
+                        </button>
+                    </div>
+                    
+                    <div class="summary-section">
+                        <h2 class="section-title">Resumo da Venda</h2>
+                        
+                        <div class="input-group">
+                            <label for="coupon"><i class="fas fa-tag"></i> Cupom de Desconto</label>
+                            <input type="text" id="coupon" placeholder="Digite o código do cupom">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="customer-cpf"><i class="fas fa-id-card"></i> CPF do Cliente (Opcional)</label>
+                            <input type="text" id="customer-cpf" placeholder="000.000.000-00">
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Desconto:</span>
+                            <span id="discount">R$ 0,00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="payment-section">
+                            <h3 class="section-title">Forma de Pagamento</h3>
+                            <div class="payment-options">
+                                <div class="payment-option active" data-method="cash">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <p>Dinheiro</p>
+                                </div>
+                                <div class="payment-option" data-method="card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <p>Cartão</p>
+                                </div>
+                                <div class="payment-option" data-method="pix">
+                                    <i class="fas fa-qrcode"></i>
+                                    <p>PIX</p>
+                                </div>
+                                <div class="payment-option" data-method="transfer">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <p>Transferência</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="confirm-btn" id="confirm-sale">
+                            <i class="fas fa-check-circle"></i> Confirmar Venda
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Products Modal -->
+    <div class="modal" id="products-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Catálogo de Produtos</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" data-tab="search">Buscar Produtos</div>
+                    <div class="modal-tab" data-tab="add">Adicionar Produto</div>
+                </div>
+
+                <div class="modal-tab-content active" id="search-tab">
+                    <div class="search-bar">
+                        <input type="text" id="modal-search" placeholder="Digite o nome ou código do produto...">
+                        <button id="modal-search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <table class="modal-products-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Produto</th>
+                                <th>Valor</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modal-products-body">
+                            <!-- Produtos serão inseridos aqui via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-tab-content" id="add-tab">
+                    <div class="form-group">
+                        <label for="new-product-code">Código do Produto</label>
+                        <input type="text" id="new-product-code" class="form-control" placeholder="Código único do produto">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-product-name">Nome do Produto</label>
+                        <input type="text" id="new-product-name" class="form-control" placeholder="Nome do produto">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-product-price">Preço</label>
+                        <input type="number" id="new-product-price" class="form-control" placeholder="0.00" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="add-new-product" style="width: 100%;">
+                            <i class="fas fa-plus"></i> Adicionar ao Catálogo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sale Confirmation Modal -->
+    <div class="modal" id="sale-confirm-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirmar Venda</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="sale-summary">
+                    <h3>Resumo da Venda</h3>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span>Itens:</span>
+                            <span id="confirm-items">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Subtotal:</span>
+                            <span id="confirm-subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Desconto:</span>
+                            <span id="confirm-discount">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total:</span>
+                            <span id="confirm-total">R$ 0,00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Forma de Pagamento:</span>
+                            <span id="confirm-payment">Dinheiro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal">Cancelar</button>
+                <button class="btn btn-success" id="finalize-sale">
+                    <i class="fas fa-check"></i> Finalizar Venda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-cash-register"></i>
+                    <span>TechCommerce PDV</span>
+                </div>
+                <p>Soluções completas para o seu negócio</p>
+                <div class="footer-links">
+                    <a href="#">Sobre</a>
+                    <a href="#">Contato</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                <p>&copy; 2023 TechCommerce PDV. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/toast.js"></script>
+    <script src="assets/js/pdv.js"></script>
+</body>
+</html>
