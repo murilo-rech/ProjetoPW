@@ -71,3 +71,12 @@ insert into faq(simbolo, pergunta, resposta) values
 ("fas fa-headset", "Suporte 24/7", "Nossa equipe está sempre disponível para ajudar.");
 
 select * from faq;
+
+insert into users(nome, email, senha)values
+("nome", "email", "senha");
+
+select * from users;
+
+DELETE FROM users WHERE id > 0;
+
+select * from users;
