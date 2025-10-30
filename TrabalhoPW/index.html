@@ -18,9 +18,9 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#" class="nav-link" data-page="home"><i class="fas fa-home"></i> Início</a></li>
-                        <li><a href="#" class="nav-link" data-page="pdv"><i class="fas fa-shopping-cart"></i> PDV</a></li>
-                        <li><a href="#" class="nav-link" data-page="user-info"><i class="fas fa-user"></i> Minha Conta</a></li>
+                        <li><a href="#" class="nav-link" data-page="home" id="home-link"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#" class="nav-link" data-page="pdv" id="pdv-link"><i class="fas fa-shopping-cart"></i> PDV</a></li>
+                        <li><a href="#" class="nav-link" data-page="user-info" id="my-account-btn"><i class="fas fa-user"></i> Minha Conta</a></li>
                     </ul>
                 </nav>
                 <div class="user-actions">
@@ -47,39 +47,6 @@
 
                 <h2>Por que escolher o TechCommerce PDV?</h2>
                 <div class="features">
-                    <div class="feature-card">
-                        <i class="fas fa-bolt"></i>
-                        <h3>Processamento Rápido</h3>
-                        <p>Finalize vendas em segundos com nossa interface otimizada e intuitiva.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Relatórios Detalhados</h3>
-                        <p>Acompanhe o desempenho do seu negócio com relatórios em tempo real.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>Multiplataforma</h3>
-                        <p>Acesse o sistema de qualquer dispositivo, a qualquer momento.</p>
-                    </div>
-                </div>
-
-                <div class="features">
-                    <div class="feature-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Segurança Máxima</h3>
-                        <p>Seus dados protegidos com criptografia de última geração.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-sync"></i>
-                        <h3>Atualizações Constantes</h3>
-                        <p>Sempre trazendo novas funcionalidades e melhorias.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-headset"></i>
-                        <h3>Suporte 24/7</h3>
-                        <p>Nossa equipe está sempre disponível para ajudar.</p>
-                    </div>
                 </div>
             </section>
         </div>
@@ -94,18 +61,19 @@
             </div>
             <div class="modal-body">
                 <div class="tabs">
-                    <div class="tab active" data-tab="login">Entrar</div>
-                    <div class="tab" data-tab="register">Cadastrar</div>
+                    <div class="tab active" data-tab="login" id="entrar">Entrar</div>
+                    <div class="tab" data-tab="register" id="register">Cadastrar</div>
                 </div>
-
+                
+                <form id="formLogin" method="post" action="api/login.php">
                 <div class="tab-content active" id="login-tab">
                     <div class="form-group">
                         <label for="login-email">E-mail</label>
-                        <input type="email" id="login-email" class="form-control" placeholder="seu@email.com">
+                        <input type="email" id="login-email" name="email" class="form-control" placeholder="seu@email.com">
                     </div>
                     <div class="form-group">
                         <label for="login-password">Senha</label>
-                        <input type="password" id="login-password" class="form-control" placeholder="Sua senha">
+                        <input type="password" id="login-password" name="senha" class="form-control" placeholder="Sua senha">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" id="login-submit" style="width: 100%;">
@@ -113,23 +81,24 @@
                         </button>
                     </div>
                 </div>
-
+                </form>
+                <form id="formRegister" method="post" action="api/register.php">
                 <div class="tab-content" id="register-tab">
                     <div class="form-group">
                         <label for="register-name">Nome Completo</label>
-                        <input type="text" id="register-name" class="form-control" placeholder="Seu nome completo">
+                        <input type="text" id="register-name" class="form-control" name="name" placeholder="Seu nome completo">
                     </div>
                     <div class="form-group">
                         <label for="register-email">E-mail</label>
-                        <input type="email" id="register-email" class="form-control" placeholder="seu@email.com">
+                        <input type="email" id="register-email" class="form-control" name="email" placeholder="seu@email.com">
                     </div>
                     <div class="form-group">
                         <label for="register-password">Senha</label>
-                        <input type="password" id="register-password" class="form-control" placeholder="Crie uma senha">
+                        <input type="password" id="register-password" class="form-control" name="password" placeholder="Crie uma senha">
                     </div>
                     <div class="form-group">
                         <label for="register-confirm">Confirmar Senha</label>
-                        <input type="password" id="register-confirm" class="form-control" placeholder="Confirme sua senha">
+                        <input type="password" id="register-confirm" class="form-control" name="confirmpassword" placeholder="Confirme sua senha">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" id="register-submit" style="width: 100%;">
@@ -137,6 +106,7 @@
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

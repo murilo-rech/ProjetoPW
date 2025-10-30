@@ -8,7 +8,7 @@ $stmt = $conn->query($query);
 
 $response = [
     "type" => "success",
-    "message" => "Lista de faqs carregada!",
+    "message" => "Lista de FAQS carregada!",
     "data" => $stmt->fetchAll()
 ];
 
