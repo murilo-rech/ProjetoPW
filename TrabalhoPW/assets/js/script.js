@@ -73,10 +73,10 @@ registerSubmit.addEventListener("click", async (e) => {
     });
     const register = await response.json();
     toast[register.type](register.message);
-
     if(register.type == "success"){
         setTimeout(() => {
             panelLogin.classList.remove("active")
+            localStorage.setItem("user", JSON.stringify(register));
         }, 1000);
 
         loginBtn.innerHTML = '<i class="fas fa-user"></i> ' + register.name;
@@ -101,6 +101,7 @@ loginSubmit.addEventListener("click", async (e) => {
     if(login.type == "success"){
         setTimeout(() => {
             panelLogin.classList.remove("active")
+            localStorage.setItem("user", JSON.stringify(login));
         }, 1000);
 
         loginBtn.innerHTML = '<i class="fas fa-user"></i> ' + login.data.nome;
@@ -130,4 +131,3 @@ pdv.addEventListener("click", () => {
         window.location.href = "pdv.html";
     }
 });
-

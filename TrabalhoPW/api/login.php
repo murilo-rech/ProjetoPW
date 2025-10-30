@@ -9,7 +9,7 @@ $senha = filter_input(INPUT_POST, 'senha', FILTER_DEFAULT);
 if (empty($email) || empty($senha) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $response = [
     "type" => "error",
-    "message" => "Email invalido ou Senha Invalido",
+    "message" => "Email ou Senha Invalido",
 ];
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
