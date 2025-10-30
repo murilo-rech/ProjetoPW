@@ -33,8 +33,10 @@ CREATE TABLE faq (
 
 CREATE TABLE sistemas (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    simbolo varchar(50) not null,
     nome VARCHAR(50) NOT NULL,
-    disponibilidade BOOLEAN DEFAULT TRUE NOT NULL
+    descricao varchar(100) not null,
+    disponibilidade varchar(10) not null
 );
 
 CREATE TABLE cupons (
@@ -80,3 +82,11 @@ select * from users;
 DELETE FROM users WHERE id > 0;
 
 select * from users;
+
+insert into sistemas(simbolo, nome, descricao, disponibilidade) values
+( "fas fa-cash-register","PDV", "Sistema de ponto de venda","online"),
+( "fas fa-boxes","Estoque", "Controle de inventário","offline"),
+( "fas fa-chart-pie","Relatórios", "Análises e métricas","offline"),
+( "fas fa-users","Clientes", "Gestão de clientes","offline");
+
+select * from sistemas;
