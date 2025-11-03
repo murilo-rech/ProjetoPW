@@ -27,12 +27,10 @@ async function renderFaq(){
 renderFaq();
 
 // LOGIN RENDERING
-
-let currentUser = false;
 const loginBtn = document.querySelector("#login-btn");
 const panelLogin = document.querySelector("#auth-modal")
 const closeLogin = document.querySelector(".close-modal");
-
+let currentUser = false;
 loginBtn.addEventListener("click", () => {
     panelLogin.classList.add("active")
 })
@@ -40,6 +38,7 @@ loginBtn.addEventListener("click", () => {
 closeLogin.addEventListener("click", () => {
     panelLogin.classList.remove("active")
 })
+
 const loginTab = document.querySelector("#login-tab")
 const registerTab = document.querySelector("#register-tab")
 const registerBtn = document.querySelector("#register")
@@ -63,6 +62,7 @@ entrarBtn.addEventListener("click", () => {
 })
 
 const registerSubmit = document.querySelector("#register-submit");
+const loginSubmit = document.querySelector("#login-submit");
 registerSubmit.addEventListener("click", async (e) => {
     e.preventDefault();
 
@@ -79,12 +79,11 @@ registerSubmit.addEventListener("click", async (e) => {
             localStorage.setItem("user", JSON.stringify(register));
         }, 1000);
 
-        loginBtn.innerHTML = '<i class="fas fa-user"></i> ' + register.name;
+        loginBtn.innerHTML = '<i class="fas fa-user"></i> ' + register.data.nome;
         currentUser = true;
     }
 });
 
-const loginSubmit = document.querySelector("#login-submit");
 loginSubmit.addEventListener("click", async (e) => {
     e.preventDefault();
 
@@ -131,3 +130,11 @@ pdv.addEventListener("click", () => {
         window.location.href = "pdv.html";
     }
 });
+
+
+let user = JSON.parse(localStorage.getItem("user"));
+if (user) {
+    console.log(user);
+    currentUser = true;
+    loginBtn.innerHTML = `<i class="fas fa-user"></i> ${user.data.nome}`;
+}

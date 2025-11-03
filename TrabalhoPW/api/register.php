@@ -7,6 +7,13 @@ $email = filter_input(INPUT_POST, 'email', FILTER_DEFAULT);
 $password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 $confirmpassword = filter_input(INPUT_POST, 'confirmpassword', FILTER_DEFAULT);
 
+$query = "SELECT * FROM users WHERE email = '{$email}'";
+$stmt = $conn->query($query);
+if($stmt->rowCount() > 0) {
+    echo json_encode(["type" => "error", "message" => "Email já cadastrado!"]);
+    exit;
+}
+
 if(!$name || !$email || !$password) {
     echo json_encode(["type" => "error", "message" => "Por favor, preencha todos os campos."]);
     exit;
@@ -24,10 +31,16 @@ $query = "insert into users(nome, email, senha)values
 
 $stmt = $conn->query($query);
 
+$user = [
+    "id" => $conn->lastInsertId(),
+    "nome" => $name,
+    "email" => $email
+];
+
 $response = [
     "type" => "success",
-    "message" => "Registro realizado com sucesso!",
-    "name" => $name
+    "message" => "Usuário registrado com sucesso!",
+    "data" => $user
 ];
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
