@@ -63,6 +63,7 @@ entrarBtn.addEventListener("click", () => {
 
 const registerSubmit = document.querySelector("#register-submit");
 const loginSubmit = document.querySelector("#login-submit");
+
 registerSubmit.addEventListener("click", async (e) => {
     e.preventDefault();
 

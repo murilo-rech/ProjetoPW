@@ -100,22 +100,6 @@
                         <div class="payment-section">
                             <h3 class="section-title">Forma de Pagamento</h3>
                             <div class="payment-options">
-                                <div class="payment-option active" data-method="cash">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                    <p>Dinheiro</p>
-                                </div>
-                                <div class="payment-option" data-method="card">
-                                    <i class="fas fa-credit-card"></i>
-                                    <p>Cartão</p>
-                                </div>
-                                <div class="payment-option" data-method="pix">
-                                    <i class="fas fa-qrcode"></i>
-                                    <p>PIX</p>
-                                </div>
-                                <div class="payment-option" data-method="transfer">
-                                    <i class="fas fa-exchange-alt"></i>
-                                    <p>Transferência</p>
-                                </div>
                             </div>
                         </div>
                         
@@ -137,8 +121,8 @@
             </div>
             <div class="modal-body">
                 <div class="modal-tabs">
-                    <div class="modal-tab active" data-tab="search">Buscar Produtos</div>
-                    <div class="modal-tab" data-tab="add">Adicionar Produto</div>
+                    <div class="modal-tab active" id="buscarP" data-tab="search">Buscar Produtos</div>
+                    <div class="modal-tab" id="addP" data-tab="add">Adicionar Produto</div>
                 </div>
 
                 <div class="modal-tab-content active" id="search-tab">
@@ -162,23 +146,26 @@
                 </div>
 
                 <div class="modal-tab-content" id="add-tab">
+                    <form action="api/insertProducts.php" method="post" id="formAdd">
+                        <input type="hidden" name="user_id" id="user_id" value="">
                     <div class="form-group">
                         <label for="new-product-code">Código do Produto</label>
-                        <input type="text" id="new-product-code" class="form-control" placeholder="Código único do produto">
+                        <input type="text" id="new-product-code" class="form-control" name="codigo" placeholder="Código único do produto">
                     </div>
                     <div class="form-group">
                         <label for="new-product-name">Nome do Produto</label>
-                        <input type="text" id="new-product-name" class="form-control" placeholder="Nome do produto">
+                        <input type="text" id="new-product-name" class="form-control" name="nome" placeholder="Nome do produto">
                     </div>
                     <div class="form-group">
                         <label for="new-product-price">Preço</label>
-                        <input type="number" id="new-product-price" class="form-control" placeholder="0.00" step="0.01" min="0">
+                        <input type="number" id="new-product-price" class="form-control" name="valor" placeholder="0.00" step="0.01" min="0">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" id="add-new-product" style="width: 100%;">
                             <i class="fas fa-plus"></i> Adicionar ao Catálogo
                         </button>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
