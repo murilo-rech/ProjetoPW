@@ -1,3 +1,4 @@
+drop database if exists PDV;
 create database PDV;
 use PDV;
 
@@ -19,9 +20,11 @@ CREATE TABLE users (
 
 CREATE TABLE products (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     codigo VARCHAR(20) UNIQUE NOT NULL,
-    valor DECIMAL(10, 2) NOT NULL
+    valor DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE faq (
@@ -33,23 +36,24 @@ CREATE TABLE faq (
 
 CREATE TABLE sistemas (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    simbolo varchar(50) not null,
+    simbolo VARCHAR(50) NOT NULL,
     nome VARCHAR(50) NOT NULL,
-    descricao varchar(100) not null,
-    disponibilidade varchar(10) not null
+    descricao VARCHAR(100) NOT NULL,
+    disponibilidade VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE cupons (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
     codigo VARCHAR(20) UNIQUE NOT NULL,
-    desconto INT NOT NULL
+    desconto INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE formpag (
     id INT PRIMARY KEY AUTO_INCREMENT,
     simbolo VARCHAR(50) NOT NULL,
-    nome VARCHAR(20) NOT NULL,
-    taxa DECIMAL(5,2) NOT NULL
+    nome VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE vendas (
@@ -63,6 +67,7 @@ CREATE TABLE vendas (
     FOREIGN KEY (formpag_id) REFERENCES formpag(id),
     FOREIGN KEY (cupom_id) REFERENCES cupons(id)
 );
+
 
 insert into faq(simbolo, pergunta, resposta) values
 ("fas fa-bolt", "Processamento Rápido", "Finalize vendas em segundos com nossa interface otimizada e intuitiva."),
@@ -90,3 +95,16 @@ insert into sistemas(simbolo, nome, descricao, disponibilidade) values
 ( "fas fa-users","Clientes", "Gestão de clientes","offline");
 
 select * from sistemas;
+
+insert into formpag(simbolo, nome) values
+( "fas fa-money-bill-wave","Dinheiro"),
+( "fas fa-credit-card","Cartão"),
+( "fas fa-qrcode","Pix"),
+( "fas fa-exchange-alt","Transferencia");
+
+select * from formpag;
+
+insert into products(user_id, nome, codigo, valor) values
+("userId", "nome", "codigo", "valor");
+
+select * from products;
