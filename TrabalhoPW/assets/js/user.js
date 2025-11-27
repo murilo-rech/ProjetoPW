@@ -44,3 +44,88 @@ btnPDV.addEventListener("click", () => {
 }
 loadSistemas()
 
+const modalCoupon = document.getElementById('coupon-modal');
+const closeModal = document.querySelector('#close-coupon-modal');
+
+console.log(closeModal);
+
+
+document.getElementById('create-coupon-btn').addEventListener('click', () => {
+    modalCoupon.classList.add('active');
+});
+
+closeModal.addEventListener('click', (e) => {
+    modalCoupon.classList.remove('active');
+});
+
+const couponCount = document.querySelector("#coupon-count");
+const couponsList = document.querySelector("#coupons-list");
+
+document.getElementById('save-coupon').addEventListener('click', async () => {
+    const response = await fetch('api/createCoupon.php?user_id=' + user.data.id, {
+        method: 'POST',
+        body: new FormData(document.getElementById('coupon-form'))
+    });
+    const result = await response.json();
+    console.log(result);
+    
+    toast[result.type](result.message);
+
+    if (result.type === 'success') {
+        setTimeout(() => {
+            modalCoupon.classList.remove('active');
+        }, 500);
+        document.getElementById('coupon-form').reset();
+        loadCoupons();
+    }
+    
+});
+
+
+async function loadCoupons() {
+    const response = await fetch("api/loadCupons.php?id=" + user.data.id)
+    const coupons = await response.json();
+    console.log(coupons);
+    couponsList.innerHTML = "";
+    couponCount.innerHTML = coupons.count + " cupons ativos";
+    coupons.data.forEach(coupon => {
+        const couponItem = document.createElement("div")
+        couponItem.classList.add("coupon-item")
+        couponItem.setAttribute("data-coupon-id", coupon.id)
+        couponItem.innerHTML = `
+                                <div class="coupon-badge">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="coupon-info">
+                                    <div class="coupon-code">${coupon.codigo}</div>
+                                    <div class="coupon-details">
+                                        <span class="coupon-value"><i class="fas fa-percent"></i> ${coupon.desconto}% de desconto</span>
+                                    </div>
+                                </div>
+                                <div class="coupon-actions">
+                                    <button class="btn-icon btn-delete" title="Excluir cupom">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            `;
+        couponsList.appendChild(couponItem)
+    });
+}
+loadCoupons()
+
+addEventListener("click", async (e) => {
+    if (e.target.closest(".btn-delete")) {
+        const couponItem = e.target.closest(".coupon-item");
+        const couponId = couponItem.getAttribute("data-coupon-id");
+        console.log(couponId);
+        const response = await fetch("api/deleteCoupon.php?id=" + couponId)
+        const result = await response.json();
+        toast[result.type](result.message);
+        if (result.type === "success") {
+            couponItem.remove();
+            loadCoupons();
+        }
+    }
+});
+
+

@@ -79,22 +79,91 @@
 
                     <div class="user-actions-grid">
                         <div class="action-card">
-                            <i class="fas fa-cog"></i>
-                            <h4>Configurações</h4>
-                            <p>Configure suas preferências</p>
-                            <button class="btn btn-outline">Configurar</button>
+                            <i class="fas fa-tag"></i>
+                            <h4>Criar Cupom</h4>
+                            <p>Crie cupons de desconto para seus clientes</p>
+                            <button class="btn btn-outline" id="create-coupon-btn">Criar Cupom</button>
                         </div>
-                        <div class="action-card">
-                            <i class="fas fa-history"></i>
-                            <h4>Histórico</h4>
-                            <p>Veja seu histórico de vendas</p>
-                            <button class="btn btn-outline">Visualizar</button>
+                    </div>
+
+                    <!-- Lista de Cupons -->
+                    <div class="coupons-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-ticket-alt"></i> Meus Cupons</h3>
+                            <span class="coupon-count" id="coupon-count">3 cupons ativos</span>
                         </div>
-                        <div class="action-card">
-                            <i class="fas fa-download"></i>
-                            <h4>Exportar Dados</h4>
-                            <p>Exporte seus relatórios</p>
-                            <button class="btn btn-outline">Exportar</button>
+
+                        <div class="coupons-list" id="coupons-list">
+                            <!-- EXEMPLO ESTÁTICO - Cupons criados -->
+                            <div class="coupon-item" data-coupon-id="1">
+                                <div class="coupon-badge">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="coupon-info">
+                                    <div class="coupon-code">DESCONTO10</div>
+                                    <div class="coupon-details">
+                                        <span class="coupon-value"><i class="fas fa-percent"></i> 10% de desconto</span>
+                                    </div>
+                                </div>
+                                <div class="coupon-actions">
+                                    <button class="btn-icon btn-delete" title="Excluir cupom">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="coupon-item" data-coupon-id="2">
+                                <div class="coupon-badge">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="coupon-info">
+                                    <div class="coupon-code">PRIMEIRACOMPRA</div>
+                                    <div class="coupon-details">
+                                        <span class="coupon-value"><i class="fas fa-dollar-sign"></i> R$ 25,00 de desconto</span>
+                                        <span class="coupon-min-value"><i class="fas fa-dollar-sign"></i> Mín: R$ 50,00</span>
+                                    </div>
+                                    <div class="coupon-meta">
+                                        <span><i class="far fa-calendar"></i> Válido até: 15/01/2025</span>
+                                        <span><i class="fas fa-users"></i> Usado: 8/100 vezes</span>
+                                    </div>
+                                </div>
+                                <div class="coupon-actions">
+                                    <button class="btn-icon btn-delete" title="Excluir cupom">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="coupon-item" data-coupon-id="3">
+                                <div class="coupon-badge">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="coupon-info">
+                                    <div class="coupon-code">BLACKFRIDAY</div>
+                                    <div class="coupon-details">
+                                        <span class="coupon-value"><i class="fas fa-percent"></i> 20% de desconto</span>
+                                        <span class="coupon-min-value"><i class="fas fa-dollar-sign"></i> Sem mínimo</span>
+                                    </div>
+                                    <div class="coupon-meta">
+                                        <span><i class="far fa-calendar"></i> Válido até: 30/11/2024</span>
+                                        <span><i class="fas fa-infinity"></i> Uso ilimitado</span>
+                                    </div>
+                                </div>
+                                <div class="coupon-actions">
+                                    <button class="btn-icon btn-delete" title="Excluir cupom">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mensagem quando não há cupons -->
+                        <div class="empty-coupons" id="empty-coupons" style="display: none;">
+                            <i class="fas fa-ticket-alt"></i>
+                            <p>Nenhum cupom criado ainda</p>
+                            <button class="btn btn-primary" id="create-first-coupon">
+                                <i class="fas fa-plus"></i> Criar Primeiro Cupom
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -130,6 +199,66 @@
             <div class="modal-footer">
                 <button class="btn btn-outline close-modal">Cancelar</button>
                 <button class="btn btn-primary" id="save-profile">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Coupon Modal -->
+    <div class="modal" id="coupon-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Criar Cupom de Desconto</h2>
+                <button class="close-modal" id="close-coupon-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="coupon-form" action="createCoupon.php" method="post">
+                    <div class="form-group">
+                        <label for="coupon-code">Código do Cupom</label>
+                        <input type="text" name="coupon-code" id="coupon-code" class="form-control" placeholder="Ex: DESCONTO10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="coupon-type">Tipo de Desconto</label>
+                        <select name="coupon-type" id="coupon-type" class="form-control" required>
+                            <option value="percentage">Porcentagem (%)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="coupon-value">Valor do Desconto</label>
+                        <input type="number" name="coupon-value" id="coupon-value" class="form-control" placeholder="Ex: 10" step="0.01" min="0" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal">Cancelar</button>
+                <button class="btn btn-primary" id="save-coupon">
+                    <i class="fas fa-save"></i> Criar Cupom
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="delete-coupon-modal">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--danger);">
+                <h2>Excluir Cupom</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger); margin-bottom: 15px;"></i>
+                    <p style="font-size: 1.1rem; margin-bottom: 10px;">Tem certeza que deseja excluir este cupom?</p>
+                    <p style="color: var(--gray);">Esta ação não pode ser desfeita.</p>
+                    <div style="background: #fff3cd; border-left: 4px solid var(--warning); padding: 15px; margin-top: 20px; border-radius: 4px; text-align: left;">
+                        <strong>Cupom:</strong> <span id="delete-coupon-code">DESCONTO10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal">Cancelar</button>
+                <button class="btn btn-danger" id="confirm-delete-coupon">
+                    <i class="fas fa-trash"></i> Excluir Cupom
+                </button>
             </div>
         </div>
     </div>

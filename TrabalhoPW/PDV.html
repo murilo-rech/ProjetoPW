@@ -62,7 +62,64 @@
                                 </tr>
                             </thead>
                             <tbody id="products-table-body">
-                                <!-- Produtos serão inseridos aqui via JavaScript -->
+                                <!-- EXEMPLO ESTÁTICO - Produtos na venda -->
+                                <!-- <tr data-product-id="1">
+                                    <td>001</td>
+                                    <td>Mouse Gamer RGB</td>
+                                    <td>
+                                        <input type="number" class="quantity-input" value="2" min="1">
+                                    </td>
+                                    <td>R$ 150,00</td>
+                                    <td class="product-total">R$ 300,00</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit-btn" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete-btn" title="Remover">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-product-id="2">
+                                    <td>002</td>
+                                    <td>Teclado Mecânico</td>
+                                    <td>
+                                        <input type="number" class="quantity-input" value="1" min="1">
+                                    </td>
+                                    <td>R$ 450,00</td>
+                                    <td class="product-total">R$ 450,00</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit-btn" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete-btn" title="Remover">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-product-id="3">
+                                    <td>003</td>
+                                    <td>Headset Wireless</td>
+                                    <td>
+                                        <input type="number" class="quantity-input" value="1" min="1">
+                                    </td>
+                                    <td>R$ 320,00</td>
+                                    <td class="product-total">R$ 320,00</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit-btn" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn delete-btn" title="Remover">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr> -->
                             </tbody>
                         </table>
                         
@@ -100,6 +157,7 @@
                         <div class="payment-section">
                             <h3 class="section-title">Forma de Pagamento</h3>
                             <div class="payment-options">
+                                <!-- Opções de pagamento serão inseridas aqui via JavaScript -->
                             </div>
                         </div>
                         
@@ -140,7 +198,107 @@
                             </tr>
                         </thead>
                         <tbody id="modal-products-body">
-                            <!-- Produtos serão inseridos aqui via JavaScript -->
+                            <!-- EXEMPLO ESTÁTICO - Catálogo de produtos -->
+                            <tr data-product-code="001" data-product-name="Mouse Gamer RGB" data-product-price="150.00">
+                                <td>001</td>
+                                <td>Mouse Gamer RGB</td>
+                                <td>R$ 150,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="002" data-product-name="Teclado Mecânico" data-product-price="450.00">
+                                <td>002</td>
+                                <td>Teclado Mecânico</td>
+                                <td>R$ 450,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="003" data-product-name="Headset Wireless" data-product-price="320.00">
+                                <td>003</td>
+                                <td>Headset Wireless</td>
+                                <td>R$ 320,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="004" data-product-name="Monitor 24 LED Full HD" data-product-price="890.00">
+                                <td>004</td>
+                                <td>Monitor 24" LED Full HD</td>
+                                <td>R$ 890,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="005" data-product-name="Webcam 1080p" data-product-price="280.00">
+                                <td>005</td>
+                                <td>Webcam 1080p</td>
+                                <td>R$ 280,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="006" data-product-name="SSD 480GB" data-product-price="320.00">
+                                <td>006</td>
+                                <td>SSD 480GB</td>
+                                <td>R$ 320,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="007" data-product-name="Memória RAM 16GB DDR4" data-product-price="420.00">
+                                <td>007</td>
+                                <td>Memória RAM 16GB DDR4</td>
+                                <td>R$ 420,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="008" data-product-name="Placa de Vídeo GTX 1650" data-product-price="1250.00">
+                                <td>008</td>
+                                <td>Placa de Vídeo GTX 1650</td>
+                                <td>R$ 1.250,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="009" data-product-name="Cadeira Gamer" data-product-price="980.00">
+                                <td>009</td>
+                                <td>Cadeira Gamer</td>
+                                <td>R$ 980,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product-code="010" data-product-name="Mousepad XXL" data-product-price="85.00">
+                                <td>010</td>
+                                <td>Mousepad XXL</td>
+                                <td>R$ 85,00</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar
+                                    </button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -148,23 +306,23 @@
                 <div class="modal-tab-content" id="add-tab">
                     <form action="api/insertProducts.php" method="post" id="formAdd">
                         <input type="hidden" name="user_id" id="user_id" value="">
-                    <div class="form-group">
-                        <label for="new-product-code">Código do Produto</label>
-                        <input type="text" id="new-product-code" class="form-control" name="codigo" placeholder="Código único do produto">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-product-name">Nome do Produto</label>
-                        <input type="text" id="new-product-name" class="form-control" name="nome" placeholder="Nome do produto">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-product-price">Preço</label>
-                        <input type="number" id="new-product-price" class="form-control" name="valor" placeholder="0.00" step="0.01" min="0">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" id="add-new-product" style="width: 100%;">
-                            <i class="fas fa-plus"></i> Adicionar ao Catálogo
-                        </button>
-                    </div>
+                        <div class="form-group">
+                            <label for="new-product-code">Código do Produto</label>
+                            <input type="text" id="new-product-code" class="form-control" name="codigo" placeholder="Código único do produto">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-product-name">Nome do Produto</label>
+                            <input type="text" id="new-product-name" class="form-control" name="nome" placeholder="Nome do produto">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-product-price">Preço</label>
+                            <input type="number" id="new-product-price" class="form-control" name="valor" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="add-new-product" style="width: 100%;">
+                                <i class="fas fa-plus"></i> Adicionar ao Catálogo
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -187,11 +345,11 @@
                     <div class="summary-details">
                         <div class="summary-item">
                             <span>Itens:</span>
-                            <span id="confirm-items">0</span>
+                            <span id="confirm-items">3</span>
                         </div>
                         <div class="summary-item">
                             <span>Subtotal:</span>
-                            <span id="confirm-subtotal">R$ 0,00</span>
+                            <span id="confirm-subtotal">R$ 1.070,00</span>
                         </div>
                         <div class="summary-item">
                             <span>Desconto:</span>
@@ -199,7 +357,7 @@
                         </div>
                         <div class="summary-item total">
                             <span>Total:</span>
-                            <span id="confirm-total">R$ 0,00</span>
+                            <span id="confirm-total">R$ 1.070,00</span>
                         </div>
                         <div class="summary-item">
                             <span>Forma de Pagamento:</span>
